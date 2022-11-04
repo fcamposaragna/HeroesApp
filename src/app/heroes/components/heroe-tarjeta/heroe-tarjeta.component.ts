@@ -19,8 +19,8 @@ export class HeroeTarjetaComponent implements OnInit {
   constructor( private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params
-      .subscribe(({id}) => console.log(id))
+    // this.activatedRoute.params
+    //   .subscribe(({id}) => console.log(id))
   }
 
 }

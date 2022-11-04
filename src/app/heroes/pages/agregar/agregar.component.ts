@@ -80,14 +80,22 @@ heroe: Heroe = {
 
   borrarHeroe(){
 
-    this.dialog.open(ConfirmarComponent, {
-      width: '250px'
-    })
+    const dialog = this.dialog.open(ConfirmarComponent, {
+      width: '250px',
+      data: this.heroe
+    });
+
+    dialog.afterClosed().subscribe(
+      (result)=>{
+        if(result){
+          this.heroesService.deleteHero(this.heroe.id!)
+            .subscribe(resp=>{
+              this.route.navigate(['/heroes'])
+            })
+        }
+      }
+    )
     
-    // this.heroesService.deleteHero(this.heroe.id!)
-    //   .subscribe(resp=>{
-    //     this.route.navigate(['/heroes'])
-    //   })
   }
 
   mostrarSnackbar (mensaje:string){
